@@ -13,10 +13,15 @@ import java.io.IOException;
  * Created by aran on 14-12-2017.
  * In project MovieBende.
  */
-public class GraphsController {
+public class GraphsController extends Controller {
     @FXML
     AnchorPane anchorPane;
 
     public void initModel(DataModel model) {
+    }
+
+    @Override
+    public void update() {
+
     }
 }

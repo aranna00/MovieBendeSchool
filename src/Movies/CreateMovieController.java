@@ -1,19 +1,19 @@
 package Movies;
 
+import javafx.event.Event;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.stage.Stage;
+import javafx.scene.control.TextFormatter;
 
-import java.io.IOException;
+import java.util.Objects;
+import java.util.function.UnaryOperator;
 
 /**
  * Created by aran on 14-12-2017.
  * In project MovieBende.
  */
-public class CreateMovieController {
+public class CreateMovieController extends Controller {
     @FXML
     private TextField name;
     @FXML
@@ -22,32 +22,67 @@ public class CreateMovieController {
     private TextField budget;
     @FXML
     private TextField yearOfRelease;
+    @FXML
+    private Button addButton;
 
     private DataModel model;
+
 
     public void initModel(DataModel model) {
         if (this.model != null) {
             throw new IllegalStateException("Model can only be initialized once");
         }
         this.model = model;
-        model.currentMovieProperty().addListener((obs, oldMovie, newMovie) -> {
-            if (oldMovie != null) {
-                name.textProperty().unbindBidirectional(oldMovie.getName());
-                country.textProperty().unbindBidirectional(oldMovie.getCountry());
-                budget.textProperty().unbindBidirectional(oldMovie.getBudget());
-                yearOfRelease.textProperty().unbindBidirectional(oldMovie.getYearOfRelease());
+    }
+
+    @Override
+    public void update() {
+        Movie SelectedMovie = model.getCurrentMovie();
+    }
+
+    @FXML
+    public void addMovie() {
+        if (Objects.equals(name.getText(), "") || Objects.equals(yearOfRelease.getText(), "") || Objects.equals(country.getText(), "") || Objects.equals(budget.getText(), "")) {
+            return;
+        }
+        Movie newMovie = new Movie(name.getText(), Integer.parseInt(yearOfRelease.getText()), country.getText(), Integer.parseInt(budget.getText()));
+        model.addMovie(newMovie);
+        name.setText("");
+        yearOfRelease.setText("");
+        country.setText("");
+        budget.setText("");
+    }
+
+    public void initNumberFields() {
+        initBudgetField();
+        initReleaseField();
+    }
+
+    private void initReleaseField() {
+        UnaryOperator<TextFormatter.Change> filter = (TextFormatter.Change change) -> {
+            String text = change.getText();
+
+            if (text.matches("[0-9]*") && (this.yearOfRelease.getText() + text).length() <= 4) {
+                return change;
             }
-            if (newMovie == null) {
-                name.setText("");
-                country.setText("");
-                budget.setText("");
-                yearOfRelease.setText("");
-            } else {
-                name.textProperty().bindBidirectional(newMovie.getName());
-                country.textProperty().bindBidirectional(newMovie.getCountry());
-                budget.textProperty().bind(newMovie.getBudget().asString());
-                yearOfRelease.textProperty().bind(newMovie.getYearOfRelease().asString());
+
+            return null;
+        };
+        TextFormatter<String> textFormatter = new TextFormatter<>(filter);
+        this.yearOfRelease.setTextFormatter(textFormatter);
+    }
+
+    private void initBudgetField() {
+        UnaryOperator<TextFormatter.Change> filter = change -> {
+            String text = change.getText();
+
+            if (text.matches("[0-9]*") && (this.budget.getText() + text).length() <= 9) {
+                return change;
             }
-        });
+
+            return null;
+        };
+        TextFormatter<String> textFormatter = new TextFormatter<>(filter);
+        budget.setTextFormatter(textFormatter);
     }
 }

@@ -26,8 +26,8 @@ public class Movie {
 		this.name.set(name);
 	}
 
-	public StringProperty  getCountry() {
-		return country;
+	public String getCountry() {
+		return country.get();
 	}
 	private void setCountry(final String country){
 		this.country.set(country);

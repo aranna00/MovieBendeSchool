@@ -1,10 +1,7 @@
 package Movies;
 
 import javafx.fxml.FXML;
-import javafx.scene.control.Label;
-import javafx.scene.control.ListCell;
-import javafx.scene.control.ListView;
-import javafx.scene.control.SplitPane;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 
 /**
@@ -24,15 +21,12 @@ public class MovieListController extends Controller {
     private Label budget;
     @FXML
     private ListView<Movie> listView;
-
-    private DataModel model;
+    @FXML
+    private Button DeleteButton;
 
     public void initModel(DataModel model) {
-        if (this.model != null) {
-            throw new IllegalStateException("Model can only be initialized once");
-        }
+        super.initModel(model);
 
-        this.model = model;
         this.listView = (ListView) ((AnchorPane) splitPane.getItems().get(0)).getChildren().get(0);
         this.listView.setItems(model.getMovieList());
 
@@ -63,13 +57,18 @@ public class MovieListController extends Controller {
 
     public void showMovie(Movie movie) {
         this.name.setText(movie.getName().get());
-        this.country.setText(movie.getCountry().get());
-        this.realeaseYear.setText(String.valueOf(movie.getYearOfRelease()));
-        this.budget.setText(String.valueOf(movie.getBudget()));
+        this.country.setText(movie.getCountry());
+        this.realeaseYear.setText(String.valueOf(movie.getYearOfRelease().get()));
+        this.budget.setText(String.valueOf(movie.getBudget().get()));
     }
 
     @Override
     public void update() {
         this.listView.setItems(model.getMovieList());
+    }
+
+    @FXML
+    private void delete() {
+        model.removeMovie(model.getCurrentMovie());
     }
 }

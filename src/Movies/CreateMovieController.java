@@ -1,6 +1,5 @@
 package Movies;
 
-import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
@@ -24,16 +23,6 @@ public class CreateMovieController extends Controller {
     private TextField yearOfRelease;
     @FXML
     private Button addButton;
-
-    private DataModel model;
-
-
-    public void initModel(DataModel model) {
-        if (this.model != null) {
-            throw new IllegalStateException("Model can only be initialized once");
-        }
-        this.model = model;
-    }
 
     @Override
     public void update() {

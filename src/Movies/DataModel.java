@@ -1,12 +1,10 @@
 package Movies;
 
-import javafx.beans.Observable;
 import javafx.beans.property.ObjectProperty;
 import javafx.beans.property.SimpleObjectProperty;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,7 +14,18 @@ import java.util.List;
  */
 public class DataModel {
 
-    private final ObservableList<Movie> movieList = FXCollections.observableArrayList(movie -> new Observable[]{movie.getName(), movie.getBudget(), movie.getCountry(), movie.getYearOfRelease()});
+    //private final ObservableList<Movie> movieList = FXCollections.observableArrayList(movie -> new Observable[]{movie.getName(), movie.getBudget(), movie.getCountry(), movie.getYearOfRelease()});
+    private ObservableList<Movie> movieList = FXCollections.observableArrayList(
+            new Movie("Star Wars: Episode IV", 1977, "USA", 13000000),
+            new Movie("Star Wars: Episode V", 1980, "USA", 18000000),
+            new Movie("Star Wars: Episode VI", 1983, "USA", 32500000),
+            new Movie("Star Wars: Episode I", 1999, "USA", 115000000),
+            new Movie("Star Wars: Episode II", 2002, "USA", 120000000),
+            new Movie("Star Wars: Episode III", 2005, "USA", 113000000),
+            new Movie("Iep!", 2010, "NL", 0),
+            new Movie("Zwart Water", 2010, "NL", 0),
+            new Movie("Shocking Blue", 2010, "NL", 0)
+    );
     private final ObjectProperty<Movie> currentMovie = new SimpleObjectProperty<>(null);
     private List<Controller> observers = new ArrayList<Controller>();
 
@@ -36,20 +45,13 @@ public class DataModel {
     public ObservableList<Movie> getMovieList() {
         return movieList;
     }
-
-    public void loadData() {
-        // mock...
-        movieList.setAll(
-                new Movie("test", 1, "NL",1),
-                new Movie("test2", 2,"NL",2),
-                new Movie("test3", 3, "NL",3),
-                new Movie("test4", 4, "NL",4),
-                new Movie("test5", 5, "NL",5)
-        );
-        notifyAllObservers();
-    }
     public void addMovie(Movie movie){
         movieList.add(movie);
+        notifyAllObservers();
+    }
+
+    public void removeMovie(Movie movie) {
+        movieList.remove(movie);
         notifyAllObservers();
     }
 

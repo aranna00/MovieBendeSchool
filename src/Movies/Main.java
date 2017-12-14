@@ -24,7 +24,6 @@ public class Main extends Application {
         GraphsController graphsController = graphs.getController();
 
         DataModel model = new DataModel();
-        model.loadData();
         createMovieController.initModel(model);
         movieListController.initModel(model);
         graphsController.initModel(model);
@@ -32,6 +31,8 @@ public class Main extends Application {
         model.attach(createMovieController);
         model.attach(movieListController);
         model.attach(graphsController);
+
+        model.notifyAllObservers();
 
         Stage graphsStage = new Stage();
         Stage createMovieStage = new Stage();

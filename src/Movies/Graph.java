@@ -10,7 +10,7 @@ public class Graph {
 
 	private int yAxisName;
 
-	private GraphPiont[] graphPiont;
+	private GraphPoint[] graphPoint;
 
 	public void graph(Movie[] movies) {
 
@@ -31,5 +31,4 @@ public class Graph {
 	public void makeHistogram() {
 
 	}
-
 }

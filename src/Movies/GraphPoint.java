@@ -1,6 +1,6 @@
 package Movies;
 
-public class GraphPiont {
+public class GraphPoint {
 
 	private float x;
 

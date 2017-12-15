@@ -19,13 +19,14 @@
                 <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
             </rowConstraints>
             <children>
-                <TextField GridPane.columnIndex="1" prefHeight="25.0" prefWidth="428.0" fx:id="name"/>
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" prefHeight="25.0" prefWidth="428.0"
-                           fx:id="yearOfRelease"/>
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" prefHeight="25.0" prefWidth="428.0"
-                           fx:id="country"/>
-                <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" prefHeight="25.0" prefWidth="428.0"
-                           fx:id="budget"/>
+                <TextField GridPane.columnIndex="1" onKeyPressed="#enterPressed" prefHeight="25.0" prefWidth="428.0"
+                           fx:id="name"/>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" onKeyPressed="#enterPressed" prefHeight="25.0"
+                           prefWidth="428.0" fx:id="yearOfRelease"/>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" onKeyPressed="#enterPressed" prefHeight="25.0"
+                           prefWidth="428.0" fx:id="country"/>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" onKeyPressed="#enterPressed" prefHeight="25.0"
+                           prefWidth="428.0" fx:id="budget"/>
                 <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="97.0" text="Name: "/>
                 <Label GridPane.rowIndex="1" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="97.0"
                        text="Year of Release: "/>

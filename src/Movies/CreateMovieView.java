@@ -4,6 +4,8 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.control.TextFormatter;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 import java.util.Objects;
 import java.util.function.UnaryOperator;
@@ -44,6 +46,18 @@ public class CreateMovieView {
         yearOfRelease.setText("");
         country.setText("");
         budget.setText("");
+    }
+
+    /**
+     * DESIGN PATTERN: Dependency Injection
+     *
+     * @param event keyevent
+     */
+    @FXML
+    public void enterPressed(KeyEvent event) {
+        if (event.getCode() == KeyCode.ENTER) {
+            addMovie();
+        }
     }
 
     /**

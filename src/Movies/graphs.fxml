@@ -5,7 +5,7 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.layout.AnchorPane?>
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Movies.GraphsController" fx:id="anchorPane">
+            xmlns:fx="http://javafx.com/fxml/1" fx:controller="Movies.GraphsView" fx:id="anchorPane">
     <children>
         <BarChart animated="false" legendVisible="false" prefHeight="400.0" prefWidth="600.0"
                   title="Number of movies per country" fx:id="barChart">

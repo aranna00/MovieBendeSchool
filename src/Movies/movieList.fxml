@@ -6,7 +6,9 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
-<SplitPane fx:id="splitPane" dividerPositions="0.5" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Movies.MovieListController">
+<SplitPane dividerPositions="0.5" maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0"
+           orientation="VERTICAL" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121"
+           xmlns:fx="http://javafx.com/fxml/1" fx:controller="Movies.MovieListView" fx:id="splitPane">
     <items>
         <AnchorPane maxHeight="200.0" maxWidth="600.0" minHeight="200.0" minWidth="600.0">
             <children>
@@ -27,7 +29,7 @@
                 <Label fx:id="country" layoutX="102.0" layoutY="49.0" prefHeight="17.0" prefWidth="297.0" />
                 <Label fx:id="realeaseYear" layoutX="102.0" layoutY="81.0" prefHeight="17.0" prefWidth="297.0" />
                 <Label fx:id="budget" layoutX="102.0" layoutY="118.0" prefWidth="297.0" />
-                <Button layoutX="273.0" layoutY="157.0" mnemonicParsing="false" onMouseClicked="#delete" text="Delete"
+                <Button layoutX="273.0" layoutY="157.0" mnemonicParsing="false" onAction="#removeSelected" text="Delete"
                         fx:id="DeleteButton"/>
             </children>
         </AnchorPane>

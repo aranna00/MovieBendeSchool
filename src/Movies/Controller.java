@@ -1,19 +1,19 @@
 package Movies;
 
+import javafx.scene.Scene;
+
+import java.util.Observer;
+
 /**
  * Created by Aran on 14/12/2017.
  * In project MovieBendeSchool.
  */
-public abstract class Controller {
-    protected DataModel model;
+public abstract class Controller implements Observer {
+    protected MovieModel model;
+    protected Scene scene;
 
-    public abstract void update();
-
-    public void initModel(DataModel model) {
-        if (this.model != null) {
-            throw new IllegalStateException("Model can only be initialized once");
-        }
-
-        this.model = model;
+    //DESIGN PATTERN: Observer
+    public Scene getScene() {
+        return scene;
     }
 }

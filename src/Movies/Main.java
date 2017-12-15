@@ -2,71 +2,61 @@ package Movies;
 
 import javafx.application.Application;
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Main extends Application {
+    CreateMovieController createMovieController;
+    MovieListController movieListController;
+    GraphsController graphsController;
 
     @Override
-    public void start(Stage movieListStage) throws Exception{
-        FXMLLoader createMovie = new FXMLLoader(getClass().getResource("createMovie.fxml"));
-        Scene createMoviescene = new Scene(createMovie.load());
-        CreateMovieController createMovieController = createMovie.getController();
-        createMovieController.initNumberFields();
+    public void start(Stage movieListStage) throws Exception {
 
-        FXMLLoader movieList = new FXMLLoader(getClass().getResource("movieList.fxml"));
-        Scene movieListScene = new Scene(movieList.load());
-        MovieListController movieListController = movieList.getController();
+        // Create MovieModel and init it in all controllers
+        MovieModel model = new MovieModel();
 
-        FXMLLoader graphs = new FXMLLoader(getClass().getResource("graphs.fxml"));
-        Scene graphsScene = new Scene(graphs.load());
-        GraphsController graphsController = graphs.getController();
+        createMovieController = new CreateMovieController(model);
+        movieListController = new MovieListController(model);
+        graphsController = new GraphsController(model);
+        // Add all controllers to model
+        model.addObserver(createMovieController);
+        model.addObserver(movieListController);
+        model.addObserver(graphsController);
 
-        DataModel model = new DataModel();
-        createMovieController.initModel(model);
-        movieListController.initModel(model);
-        graphsController.initModel(model);
+        // Add all seed info to views
+        model.notifyObservers();
 
-        model.attach(createMovieController);
-        model.attach(movieListController);
-        model.attach(graphsController);
-
-        model.notifyAllObservers();
-
+        // Create additional stages for more windows
         Stage graphsStage = new Stage();
         Stage createMovieStage = new Stage();
-
+//
+        // Set window titles
         graphsStage.setTitle("Show Graphs");
         movieListStage.setTitle("Show all movies");
         createMovieStage.setTitle("Add new movie");
-
+//
+        // Set window locations
         graphsStage.setY(250);
         movieListStage.setY(250);
         createMovieStage.setY(250);
-
-        graphsStage.setX(75);
-        movieListStage.setX(775);
-        createMovieStage.setX(1475);
-
-        movieListStage.setOnCloseRequest((arg0 -> {
-            Platform.exit();
-        }));
-        graphsStage.setOnCloseRequest((arg0 -> {
-            Platform.exit();
-        }));
-        createMovieStage.setOnCloseRequest((arg0 -> {
-            Platform.exit();
-        }));
-
-        createMovieStage.setScene(createMoviescene);
-        movieListStage.setScene(movieListScene);
-        graphsStage.setScene(graphsScene);
+//
+        graphsStage.setX(25);
+        movieListStage.setX(675);
+        createMovieStage.setX(1325);
+//
+        // Close all windows on closing 1 window
+        movieListStage.setOnCloseRequest((arg0 -> Platform.exit()));
+        graphsStage.setOnCloseRequest((arg0 -> Platform.exit()));
+        createMovieStage.setOnCloseRequest((arg0 -> Platform.exit()));
+//
+        // Set stage scenes and show windows
+        createMovieStage.setScene(createMovieController.getScene());
+        movieListStage.setScene(movieListController.getScene());
+        graphsStage.setScene(graphsController.getScene());
         createMovieStage.show();
         graphsStage.show();
         movieListStage.show();
     }
-
 
     public static void main(String[] args) {
         launch(args);

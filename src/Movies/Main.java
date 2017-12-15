@@ -9,6 +9,10 @@ public class Main extends Application {
     MovieListController movieListController;
     GraphsController graphsController;
 
+    public static void main(String[] args) {
+        launch(args);
+    }
+
     @Override
     public void start(Stage movieListStage) throws Exception {
 
@@ -56,9 +60,5 @@ public class Main extends Application {
         createMovieStage.show();
         graphsStage.show();
         movieListStage.show();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
     }
 }

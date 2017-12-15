@@ -9,8 +9,8 @@ import java.util.Observable;
 /**
  * Created by aran on 14-12-2017.
  * In project MovieBende.
- *
- *  Observer
+ * <p>
+ * Observer
  */
 public class MovieModel extends Observable {
     // List of movies with default data
@@ -25,12 +25,14 @@ public class MovieModel extends Observable {
             new Movie("Zwart Water", 2010, "NL", 0),
             new Movie("Shocking Blue", 2010, "NL", 0)
     );
+
     public ObservableList<Movie> getMovieList() {
         Comparator<Movie> comparator = Comparator.comparingInt(Movie::getYearOfRelease);
         FXCollections.sort(movieList, comparator);
         return movieList;
     }
-    public void addMovie(Movie movie){
+
+    public void addMovie(Movie movie) {
         movieList.add(movie);
         this.notifyObservers();
     }

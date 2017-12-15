@@ -23,6 +23,8 @@ public class GraphsController extends Controller {
     }
 
     /**
+     *
+     * DESIGN PATTERN: command
      * Update view with new data from MovieModel
      */
     @Override

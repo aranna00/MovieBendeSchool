@@ -29,6 +29,9 @@ public class MovieListView {
      * @param movie The movie to show in labels
      */
     public void showMovie(Movie movie) {
+        if (movie == null) {
+            return;
+        }
         this.name.setText(movie.getName().get());
         this.country.setText(movie.getCountry());
         this.realeaseYear.setText(String.valueOf(movie.getYearOfRelease()));

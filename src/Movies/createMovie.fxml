@@ -6,39 +6,41 @@
 <AnchorPane maxHeight="400.0" maxWidth="600.0" minHeight="400.0" minWidth="600.0" prefHeight="400.0" prefWidth="600.0"
             xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1"
             fx:controller="Movies.CreateMovieView">
-   <children>
-      <GridPane focusTraversable="true" layoutX="35.0" layoutY="91.0" prefHeight="236.0" prefWidth="533.0">
-         <columnConstraints>
-            <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0"/>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
-         </columnConstraints>
-         <rowConstraints>
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
-         </rowConstraints>
-         <children>
-            <TextField GridPane.columnIndex="1" prefHeight="25.0" prefWidth="428.0" fx:id="name"/>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" prefHeight="25.0" prefWidth="428.0"
-                       fx:id="yearOfRelease"/>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" prefHeight="25.0" prefWidth="428.0"
-                       fx:id="country"/>
-            <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" prefHeight="25.0" prefWidth="428.0"
-                       fx:id="budget"/>
-            <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="97.0" text="Name: "/>
-            <Label GridPane.rowIndex="1" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="97.0"
-                   text="Year of Release: "/>
-            <Label GridPane.rowIndex="2" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="97.0" text="Country: "/>
-            <Label GridPane.rowIndex="3" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="97.0" text="Budget: "/>
-         </children>
-      </GridPane>
-      <Label layoutX="176.0" layoutY="14.0" text="Add a new movie">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Label>
-      <Button layoutX="272.0" layoutY="341.0" mnemonicParsing="false" onMousePressed="#addMovie"
-              onTouchPressed="#addMovie" text="Add" fx:id="addButton"/>
-   </children>
+    <children>
+        <GridPane focusTraversable="true" layoutX="35.0" layoutY="91.0" prefHeight="236.0" prefWidth="533.0">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <TextField GridPane.columnIndex="1" prefHeight="25.0" prefWidth="428.0" fx:id="name"/>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" prefHeight="25.0" prefWidth="428.0"
+                           fx:id="yearOfRelease"/>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="2" prefHeight="25.0" prefWidth="428.0"
+                           fx:id="country"/>
+                <TextField GridPane.columnIndex="1" GridPane.rowIndex="3" prefHeight="25.0" prefWidth="428.0"
+                           fx:id="budget"/>
+                <Label alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="97.0" text="Name: "/>
+                <Label GridPane.rowIndex="1" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="97.0"
+                       text="Year of Release: "/>
+                <Label GridPane.rowIndex="2" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="97.0"
+                       text="Country: "/>
+                <Label GridPane.rowIndex="3" alignment="CENTER_RIGHT" prefHeight="17.0" prefWidth="97.0"
+                       text="Budget: "/>
+            </children>
+        </GridPane>
+        <Label layoutX="176.0" layoutY="14.0" text="Add a new movie">
+            <font>
+                <Font size="30.0"/>
+            </font>
+        </Label>
+        <Button layoutX="272.0" layoutY="341.0" mnemonicParsing="false" onMousePressed="#addMovie"
+                onTouchPressed="#addMovie" text="Add" fx:id="addButton"/>
+    </children>
 </AnchorPane>

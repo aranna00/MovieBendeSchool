@@ -31,10 +31,12 @@ public class MovieListController extends Controller {
      */
     @Override
     public void update(Observable o, Object arg) {
+        // DESIGN PATTERN: command
         movieListView.setListView((ObservableList<Movie>) arg);
     }
 
     public void removeMovie(Movie movie) {
+        // DESIGN PATTERN: command
         model.removeMovie(movie);
     }
 }

@@ -23,6 +23,7 @@ public class CreateMovieController extends Controller {
         createMovieView.setController(this);
     }
 
+    // DESIGN PATTERN: command
     public void addMovie(Movie movie) {
         model.addMovie(movie);
     }

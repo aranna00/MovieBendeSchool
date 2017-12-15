@@ -60,6 +60,11 @@ public class CreateMovieView {
         }
     }
 
+    @FXML
+    public void selectFile() {
+        controller.ImportCsv();
+    }
+
     /**
      * Init all numberfields with a TextFormatter
      */

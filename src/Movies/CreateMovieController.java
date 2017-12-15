@@ -28,6 +28,11 @@ public class CreateMovieController extends Controller {
         model.addMovie(movie);
     }
 
+    public void ImportCsv() {
+        CSVImporter csvImporter = new CSVImporter();
+        model.importMovies(csvImporter);
+    }
+
     @Override
     public void update(Observable o, Object arg) {
         // Not needed

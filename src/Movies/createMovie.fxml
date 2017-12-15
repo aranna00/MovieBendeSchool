@@ -41,7 +41,19 @@
                 <Font size="30.0"/>
             </font>
         </Label>
-        <Button layoutX="272.0" layoutY="341.0" mnemonicParsing="false" onMousePressed="#addMovie"
-                onTouchPressed="#addMovie" text="Add" fx:id="addButton"/>
+        <GridPane layoutX="-4.0" layoutY="340.0" prefHeight="25.0" prefWidth="606.0">
+            <columnConstraints>
+                <ColumnConstraints halignment="RIGHT" hgrow="SOMETIMES" minWidth="10.0"/>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0"/>
+            </columnConstraints>
+            <rowConstraints>
+                <RowConstraints minHeight="10.0" vgrow="SOMETIMES"/>
+            </rowConstraints>
+            <children>
+                <Button mnemonicParsing="false" onMousePressed="#addMovie" onTouchPressed="#addMovie" text="Add"
+                        fx:id="addButton"/>
+                <Button GridPane.columnIndex="1" mnemonicParsing="false" onAction="#selectFile" text="Import CSV"/>
+            </children>
+        </GridPane>
     </children>
 </AnchorPane>

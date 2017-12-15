@@ -2,7 +2,6 @@ package Movies;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
-import javafx.scene.layout.AnchorPane;
 
 /**
  * Created by aran on 14-12-2017.
@@ -27,7 +26,6 @@ public class MovieListController extends Controller {
     public void initModel(DataModel model) {
         super.initModel(model);
 
-        this.listView = (ListView) ((AnchorPane) splitPane.getItems().get(0)).getChildren().get(0);
         this.listView.setItems(model.getMovieList());
 
         this.listView.getSelectionModel().selectedItemProperty().addListener((obs, oldSelection, newSelection) ->
@@ -49,7 +47,7 @@ public class MovieListController extends Controller {
                 if (empty) {
                     setText(null);
                 } else {
-                    setText(movie.getName().get() + " (" + movie.getYearOfRelease().get() + ")");
+                    setText(movie.getName().get() + " (" + movie.getYearOfRelease() + ")");
                 }
             }
         });
@@ -58,7 +56,7 @@ public class MovieListController extends Controller {
     public void showMovie(Movie movie) {
         this.name.setText(movie.getName().get());
         this.country.setText(movie.getCountry());
-        this.realeaseYear.setText(String.valueOf(movie.getYearOfRelease().get()));
+        this.realeaseYear.setText(String.valueOf(movie.getYearOfRelease()));
         this.budget.setText(String.valueOf(movie.getBudget().get()));
     }
 

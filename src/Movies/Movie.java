@@ -33,8 +33,8 @@ public class Movie {
 		this.country.set(country);
 	}
 
-	public IntegerProperty getYearOfRelease() {
-		return yearOfRelease;
+	public int getYearOfRelease() {
+		return yearOfRelease.get();
 	}
 	private void setYearOfRelease(final int yearOfRelease){
 		this.yearOfRelease.set(yearOfRelease);
